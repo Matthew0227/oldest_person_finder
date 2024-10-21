@@ -5,10 +5,10 @@ def input_name(ask_user_for_name):
     #loop 1: asked the user for a name and ensures that the users inputs a letters only value
     while True:
         name = input(ask_user_for_name)
-        if name.isalpha():
-            return name
+        if any(char.isdigit() for char in name):
+            print("Please enter a name containing letters and special characters only: ")
         else:
-            print("Please enter a name containing letters only: ")
+            return name
 
 # function for number
 def input_age(ask_user_for_number):
