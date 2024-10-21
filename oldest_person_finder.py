@@ -11,45 +11,44 @@
 persons_list = {}
 new_person_info = {}
 
+# function for name
+def input_name(ask_user_for_name):
+    while True:
+        name = input(ask_user_for_name)
+        if name.isalpha():
+            return name
+        else:
+            print("Please enter a name containing letters only: ")
+
+# function for number
+def input_age(ask_user_for_number):
+    while True:
+        age = input(ask_user_for_number)
+        if age.isdigit():
+            age = int(age)
+            if 0 < age <= 120:
+                print("rerer")
+                return age
+        else:
+            print("Please enter a number between 1-120 for your age: ")
+
+name = input_name("Please enter a name: ")
+age = input_age("Please enter an age: ")
+
+
 # Loop 1: ask the user to enter value
 while True:
-    try:
-        name = input("Please enter a name: ")
-        #loop 2: requires the user to enter a name repeatedly until it enters the correct value
-        while True:
-            try:
-                if name != name.isdigit():
-                    # ends the loop 2
-                    break
-            except ValueError:
-                print("Please enter a name containing letters only: ")
+    new_person_info[age] = {
+        "name" : name,
+        "age" : age
+    }
 
-        age = input("Please enter your age: ")
-        #loop 3: requires the user to enter an age repeatedly until it enters the correct value
-        while True:
-            try:
-                if age == age.isdigit():
-                    if 0 < age <= 120:
-                        # ends the loop 3
-                        break
-            except ValueError:
-                print("Please enter a number between 1-120 for your age: ")
-
-        new_person_info[age] = {
-            "name" : name,
-            "age" : age
-        }
-
-        persons_list.append(new_person_info)
-
-        try_again = input("enter another one? (y/n): ")
-        try_again = try_again.lower()
-
-        if try_again == "n":
+    try_again = input("enter another one? (y/n): ")
+    try_again = try_again.lower()
+    
+    if try_again == "n":
             # ends the loop 1 if the user enters the letter n
-            break
-    except ValueError:
-        print(persons_list[len(persons_list)])
-
+        print(new_person_info)
+        break
 
         
